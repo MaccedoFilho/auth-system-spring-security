@@ -1,4 +1,6 @@
 package com.macedo.auth.authsystem.entity;
 
-public class RoleName {
+public enum RoleName {
+    ROLE_ADMIN,
+    ROLE_USER
 }
