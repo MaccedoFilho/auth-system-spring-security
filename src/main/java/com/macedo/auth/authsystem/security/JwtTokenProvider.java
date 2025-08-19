@@ -23,11 +23,9 @@ public class JwtTokenProvider {
         this.refreshTokenExpirationMs = jwtProperties.getRefreshTokenExpirationMs();
     }
 
-    public String generateAccessToken(Authentication authentication) {
-        String username = authentication.getName();
+    public String generateAccessToken(String username) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + accessTokenExpirationMs);
-
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(now)
@@ -36,11 +34,9 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public String generateRefreshToken(Authentication authentication) {
-        String username = authentication.getName();
+    public String generateRefreshToken(String username) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + refreshTokenExpirationMs);
-
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(now)
